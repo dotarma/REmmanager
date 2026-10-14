@@ -15,7 +15,7 @@ class ReleaseTests(unittest.TestCase):
         summary = patch.dict(os.environ, {'GITHUB_STEP_SUMMARY': ''})
         summary.start()
         self.addCleanup(summary.stop)
-        temporary = tempfile.TemporaryDirectory()
+        temporary = tempfile.TemporaryDirectory(prefix='remmanager-release-')
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
         (self.root / 're_manager').mkdir()
@@ -60,13 +60,29 @@ class ReleaseTests(unittest.TestCase):
         self.assertIn('--draft', create)
         self.assertEqual(create[create.index('--target') + 1], 'a' * 40)
         self.assertEqual(upload[:3], ('release', 'upload', tag))
-        self.assertIn(str(self.directory / 'REmmanager.exe'), upload)
-        self.assertIn(str(self.directory / 'REmmanager.sha256'), upload)
+        self.assertTrue(Path(upload[3]).samefile(self.directory / 'REmmanager.exe'))
+        self.assertTrue(Path(upload[4]).samefile(self.directory / 'REmmanager.sha256'))
         self.assertIn('--draft=false', edit)
         self.assertIn('--latest=true', edit)
         self.assertNotIn('--prerelease', create)
         self.assertEqual((self.directory / 'REmmanager.sha256').read_text(encoding='utf-8'),
                          hashlib.sha256(b'build fixture').hexdigest() + '  REmmanager.exe\n')
+
+    @unittest.skipUnless(os.name == 'nt', 'Windows short-path regression')
+    def test_release_upload_accepts_windows_short_path_alias(self):
+        import ctypes
+        from ctypes import wintypes
+
+        get_short_path = ctypes.WinDLL('kernel32', use_last_error=True).GetShortPathNameW
+        get_short_path.argtypes = [wintypes.LPCWSTR, wintypes.LPWSTR, wintypes.DWORD]
+        get_short_path.restype = wintypes.DWORD
+        buffer = ctypes.create_unicode_buffer(32768)
+        length = get_short_path(str(self.directory), buffer, len(buffer))
+        if not length or length >= len(buffer) or buffer.value == str(self.directory):
+            self.skipTest('8.3 short filenames are unavailable on this filesystem')
+        self.directory = Path(buffer.value)
+        self.assertNotEqual(str(self.directory), str(self.directory.resolve()))
+        self.test_release_uploads_both_assets_before_publishing_exact_commit()
 
     def test_debug_is_prerelease_and_does_not_replace_latest(self):
         with patch('tools.publish_release.gh', return_value='') as api:

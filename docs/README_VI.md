@@ -119,7 +119,7 @@ Sau khi build và vượt qua các test trên Windows x64, workflow đưa `REmma
 
 Tag trỏ đúng commit được chọn lúc chạy. Các lượt xuất bản chạy lần lượt giữa các nhánh; không ghi đè tag hay release cũ. Nếu upload lỗi, release giữ ở dạng draft để kiểm tra và giữ số thứ tự đó; lượt sau dùng số mới. Workflow dùng `GITHUB_TOKEN` có sẵn với quyền `contents: write`, không cần token cá nhân. Build ở máy không tự xuất bản.
 
-Ngoài 99 test backend, có 7 test xuất bản kiểm tra bộ đếm tag theo phiên bản/loại build, đồng bộ phiên bản, checksum, Debug pre-release và giữ draft nếu upload lỗi.
+Ngoài 99 test backend, có 8 test xuất bản kiểm tra bộ đếm tag theo phiên bản/loại build, đồng bộ phiên bản, checksum, Debug pre-release, giữ draft nếu upload lỗi và đường dẫn Windows dạng 8.3.
 
 Kiểm thử core với runtime đóng gói:
 
