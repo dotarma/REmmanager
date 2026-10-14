@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+.test-deps/
+build/
+dist/
+releases/
+*.spec
+*.egg-info/
+artifacts/
+REEngineModManager-source.zip
+.build-tools/
+winui/bin/
+winui/obj/
+winui/Backend.zip
+REmmanager-source.zip

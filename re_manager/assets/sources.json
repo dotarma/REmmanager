@@ -1,0 +1,144 @@
+[
+  {
+    "asset": "fonts/GoogleSansFlex.ttf",
+    "source": "https://github.com/googlefonts/googlesans-flex/releases/download/v5.000/GoogleSansFlex-v5.000.Android.zip",
+    "member": "GoogleSansFlex[ROND,opsz,slnt,wdth,wght].ttf",
+    "sha256": "0a5313cd1a98a1f6402680d68b9367d7a931997ee885fe3bfd6c2561a138001e"
+  },
+  {
+    "asset": "banners/re2.jpg",
+    "source": "https://cdn.akamai.steamstatic.com/steam/apps/883710/library_hero.jpg",
+    "sha256": "ab4a74ad78636cecd4cfc4fcdb90dc395c40dcfb48bd474115648b91adc49b01",
+    "copyright": "CAPCOM / original rights holders; game identification artwork"
+  },
+  {
+    "asset": "banners/re3.jpg",
+    "source": "https://cdn.akamai.steamstatic.com/steam/apps/952060/library_hero.jpg",
+    "sha256": "36fefa035683d9835d5d470367a7cba16f7fd654b90c9a6de5027cdcefa680a7",
+    "copyright": "CAPCOM / original rights holders; game identification artwork"
+  },
+  {
+    "asset": "banners/re4.jpg",
+    "source": "https://cdn.akamai.steamstatic.com/steam/apps/2050650/library_hero.jpg",
+    "sha256": "31e6ab296f5fd1cb0691cc493286bc3cc755108e9a96c6efc113105499221a63",
+    "copyright": "CAPCOM / original rights holders; game identification artwork"
+  },
+  {
+    "asset": "banners/re7.jpg",
+    "source": "https://cdn.akamai.steamstatic.com/steam/apps/418370/library_hero.jpg",
+    "sha256": "904bd773923925697bb99fc2cdd08b2d257215b6855c03e88152da8c7da553c9",
+    "copyright": "CAPCOM / original rights holders; game identification artwork"
+  },
+  {
+    "asset": "banners/re8.jpg",
+    "source": "https://cdn.akamai.steamstatic.com/steam/apps/1196590/library_hero.jpg",
+    "sha256": "c365e3335533edc1265964dbf235ff1b268f0ac95a23a1e9ac693181b7611891",
+    "copyright": "CAPCOM / original rights holders; game identification artwork"
+  },
+  {
+    "asset": "banners/re9.jpg",
+    "source": "https://cdn.akamai.steamstatic.com/steam/apps/3764200/library_hero.jpg",
+    "sha256": "e09a019192dcf48f0360afe5c53c016587b5b280116bc889172a65ebd79cef93",
+    "copyright": "CAPCOM / original rights holders; game identification artwork"
+  },
+  {
+    "asset": "icons/add.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Add/SVG/ic_fluent_add_20_regular.svg",
+    "sha256": "fdf9fefaf083ff2349ac94afd47aab8ecb554650781c5797176b9d6ad3caee05"
+  },
+  {
+    "asset": "icons/folder.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Folder%20Open/SVG/ic_fluent_folder_open_20_regular.svg",
+    "sha256": "c5f8b2db9af20a454c1f05ce6eda4b21c99f1b8677b14b6d7d07d5817140a487"
+  },
+  {
+    "asset": "icons/refresh.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Arrow%20Sync/SVG/ic_fluent_arrow_sync_20_regular.svg",
+    "sha256": "1713352c66b798bd1bbf86467ab33e45ac615d8a18d3f79c50b195034a51ab9e"
+  },
+  {
+    "asset": "icons/settings.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Settings/SVG/ic_fluent_settings_20_regular.svg",
+    "sha256": "ac5bdb808bed91dc8c0b6f346e7a0a1ee1901fc4b50f5641987498a65e200685"
+  },
+  {
+    "asset": "icons/play.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Play/SVG/ic_fluent_play_20_regular.svg",
+    "sha256": "0666c1378f63d4d5c32f91b4107086bc14799dff306027976be591da8843ae45"
+  },
+  {
+    "asset": "icons/stop.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Stop/SVG/ic_fluent_stop_20_regular.svg",
+    "sha256": "8023e072d92bf65ac7647ae651d828d083834abc2eee1a2d24d64e10815d493a"
+  },
+  {
+    "asset": "icons/delete.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Delete/SVG/ic_fluent_delete_20_regular.svg",
+    "sha256": "c3ce6fcb04fa1564fc50e00677d763ddf5cafa0ade58604df4c478268ef54452"
+  },
+  {
+    "asset": "icons/download.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Arrow%20Download/SVG/ic_fluent_arrow_download_20_regular.svg",
+    "sha256": "28e752ccfd95feb1850de1da3d170f34fd31765417d3431a7dbf3da89840ea33"
+  },
+  {
+    "asset": "icons/check.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Checkmark%20Circle/SVG/ic_fluent_checkmark_circle_20_regular.svg",
+    "sha256": "ee144bd831dd8a7b46976e38825f4c808e7f2468e2b34b587e79036265e801f7"
+  },
+  {
+    "asset": "icons/circle.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Circle/SVG/ic_fluent_circle_20_regular.svg",
+    "sha256": "039fc0cb4a21cbf2a52fdd5590a7eda55cd614a397bc7441925a5ac2bfc38f37"
+  },
+  {
+    "asset": "icons/warning.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Warning/SVG/ic_fluent_warning_20_regular.svg",
+    "sha256": "c3bdfef09229240562268d03a5036cdd8185b7d25c2f21f572add0f3aeb62eb2"
+  },
+  {
+    "asset": "icons/open.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Open/SVG/ic_fluent_open_20_regular.svg",
+    "sha256": "a6a9e0bcb65b97529e3904b3966b7d9f725d6d9c318aca98ca33827ec514b066"
+  },
+  {
+    "asset": "icons/person.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Person/SVG/ic_fluent_person_20_regular.svg",
+    "sha256": "c75bdf7e4c02437f3ad35c305253f4eaf4e2dfb2cc11e30d5a31af02a391e7ad"
+  },
+  {
+    "asset": "icons/library.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Library/SVG/ic_fluent_library_20_regular.svg",
+    "sha256": "ab97e663042e78079ed4c46ea44390b8e5cccac5382dc2282cc617a5ea564272"
+  },
+  {
+    "asset": "icons/search.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Search/SVG/ic_fluent_search_20_regular.svg",
+    "sha256": "5ac1eac82df532662cd1bad2c8e55763846e1b258740bcbb0612a48d22630d40"
+  },
+  {
+    "asset": "icons/games.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Games/SVG/ic_fluent_games_20_regular.svg",
+    "sha256": "1ab0f941bc408d6a9700e185dfd8daf74132dca2702d0efe3b0e0b010148f0e8"
+  },
+  {
+    "asset": "icons/info.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Info/SVG/ic_fluent_info_20_regular.svg",
+    "sha256": "498bc2a24fb99480e7565b502467a4cc8e967b41b0c374c1283a68fc0da73b7a"
+  },
+  {
+    "asset": "icons/dismiss.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Dismiss/SVG/ic_fluent_dismiss_20_regular.svg",
+    "sha256": "e84ad771fa8afba8e3ef52c98d9ab2d8ef4fc8e23c5954766a1c4e88fc13b355"
+  },
+  {
+    "asset": "icons/link.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Link/SVG/ic_fluent_link_20_regular.svg",
+    "sha256": "82b1fa623cc2d9c7a757b747ff706e62899ba160c575093ddfb1f38481541bc3"
+  },
+  {
+    "asset": "icons/book.svg",
+    "source": "https://raw.githubusercontent.com/microsoft/fluentui-system-icons/main/assets/Book%20Open/SVG/ic_fluent_book_open_20_regular.svg",
+    "sha256": "902200bc2ca473ed6a3087029fb36638feeca826531e1f92a1d0da2a4a11cb96"
+  }
+]
