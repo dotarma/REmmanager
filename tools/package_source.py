@@ -6,6 +6,7 @@ root = Path(__file__).resolve().parents[1]
 target = root / "REmmanager-source.zip"
 files = [root / name for name in ("README.md", "pyproject.toml", "main.py", "launch.bat", ".gitignore")]
 files.extend((root / 'docs').rglob('*.md'))
+files.extend((root / '.github/workflows').glob('*.yml'))
 for directory in ("re_manager", "tests", "tools"):
     files.extend((root / directory).rglob("*.py"))
 files.extend(p for p in (root / "tools").iterdir() if p.suffix in (".ps1", ".txt"))
@@ -20,6 +21,7 @@ with zipfile.ZipFile(target) as archive:
     assert "REmmanager/re_manager/assets/fonts/GoogleSansFlex.ttf" in archive.namelist()
     assert "REmmanager/re_manager/assets/fonts/OFL.txt" in archive.namelist()
     assert "REmmanager/winui/REmmanager.csproj" in archive.namelist()
+    assert "REmmanager/.github/workflows/build.yml" in archive.namelist()
     assert "REmmanager/docs/README_VI.md" in archive.namelist()
     assert "REmmanager/docs/UI_DESIGN.md" in archive.namelist()
     assert "REmmanager/re_manager/assets/icons/LICENSE.txt" in archive.namelist()

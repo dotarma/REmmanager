@@ -106,7 +106,18 @@ python tools/verify_ui.py --screenshots artifacts/winui
 python tools/package_source.py
 ```
 
-The build uses .NET SDK 8.0.425, Windows App SDK 2.5.1, Python 3.13.9, and the dependencies in `tools/backend-requirements.txt`. Output: `dist/REmmanager.exe`. `main.py` and `launch.bat` launch the built EXE; they are not a standalone Python GUI.
+The build uses .NET SDK 8.0.425, Windows App SDK 2.5.1, Python 3.13.9, and the dependencies in `tools/backend-requirements.txt`. Output: `dist/REmmanager.exe`. For Debug, pass `-Configuration Debug`; use `-OutputDirectory artifacts/debug` to keep it separate. Debug disables managed optimizations and embeds managed debug symbols in the single EXE. `main.py` and `launch.bat` launch the built EXE; they are not a standalone Python GUI.
+
+### GitHub Actions builds
+
+Open **Actions → Build and publish → Run workflow**, select `main` or a version branch, and choose **Release** or **Debug**. The workflow runs only on manual dispatch; commits, pushes, pull requests, and tags do not trigger builds. See [GitHub's manual workflow guide](https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow).
+
+After building and passing the tests on Windows x64, the workflow publishes `REmmanager.exe` and `REmmanager.sha256` to GitHub Releases. Version metadata must match in `pyproject.toml`, the Python engine, and the WinUI project. Tags use independent counters for each configuration and version:
+
+- Release: `main-0.5.2-001`, `main-0.5.2-002`, …; published as a normal release and marked Latest.
+- Debug: `debug-0.5.2-001`, `debug-0.5.2-002`, …; published as a pre-release without replacing Latest.
+
+The tag targets the exact commit selected for the run. Publication is serialized across branches, and existing tags/releases are never overwritten. A failed upload leaves a draft for inspection and reserves that number; the next run uses a new number. The workflow uses the built-in `GITHUB_TOKEN` with `contents: write`; no personal token is needed. Building locally does not publish anything.
 
 Run the backend tests using the bundled runtime:
 
@@ -114,6 +125,6 @@ Run the backend tests using the bundled runtime:
 .\.build-tools\python\python.exe -c "import sys,unittest; sys.path.insert(0,'.'); r=unittest.TextTestRunner().run(unittest.defaultTestLoader.discover('tests')); sys.exit(not r.wasSuccessful())"
 ```
 
-99 backend tests have passed, covering multiple accounts, DPAPI, failed switches, account isolation, session-only logins, legacy-key migration, PAKs, backup/rollback, unsafe archives, mocked Nexus requests, installation-scoped process control, and onboarding. Language checks cover English defaults and preservation of saved Vietnamese preferences. WinUI QA checks the fresh English interface, three themes × two languages, all six banners, Fluent SVGs, Windows accent sync, compact layouts, maximized/fullscreen resizing, native controls, reduced motion, and the Vietnamese/English account picker. Images are rendered from the app's own XAML tree rather than captured from the desktop. Real-game mod loading and downloads using real Nexus accounts have not been tested; account QA uses simulated data.
+106 automated tests cover release numbering, failed uploads, version consistency, and multiple accounts, DPAPI, failed switches, account isolation, session-only logins, legacy-key migration, PAKs, backup/rollback, unsafe archives, mocked Nexus requests, installation-scoped process control, and onboarding. Language checks cover English defaults and preservation of saved Vietnamese preferences. WinUI QA checks the fresh English interface, three themes × two languages, all six banners, Fluent SVGs, Windows accent sync, compact layouts, maximized/fullscreen resizing, native controls, reduced motion, and the Vietnamese/English account picker. Images are rendered from the app's own XAML tree rather than captured from the desktop. Real-game mod loading and downloads using real Nexus accounts have not been tested; account QA uses simulated data.
 
 Documentation lives in `docs/`; the English README remains at the project root. Artwork, fonts, and icons are bundled. Sources/hashes are listed in `re_manager/assets/sources.json`; the font license is `assets/fonts/OFL.txt`, and the icon license is `assets/icons/LICENSE.txt`. The runtime also includes Python and dependency licenses.

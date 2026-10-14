@@ -1,4 +1,9 @@
-param([string]$Python = 'python')
+param(
+    [string]$Python = 'python',
+    [ValidateSet('Release', 'Debug')]
+    [string]$Configuration = 'Release',
+    [string]$OutputDirectory = 'dist'
+)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $projectRoot
@@ -16,6 +21,7 @@ Invoke-Checked $Python @('tools/prepare_backend.py')
 Invoke-Checked '.\.build-tools\python\python.exe' @('tools/verify_backend.py')
 $dotnet = Join-Path $projectRoot '.build-tools/dotnet/dotnet.exe'
 Invoke-Checked $dotnet @('restore', 'winui/REmmanager.csproj', '-p:Platform=x64', '--source', 'https://api.nuget.org/v3/index.json', '--packages', '.build-tools/nuget')
-Invoke-Checked $dotnet @('publish', 'winui/REmmanager.csproj', '-c', 'Release', '-p:Platform=x64', '--no-restore', '-o', 'dist')
-if (-not (Test-Path -LiteralPath 'dist/REmmanager.exe')) { throw 'Published executable missing.' }
-Write-Host 'Ready: dist/REmmanager.exe (Python, .NET and Windows App SDK bundled)'
+Invoke-Checked $dotnet @('publish', 'winui/REmmanager.csproj', '-c', $Configuration, '-p:Platform=x64', '--no-restore', '-o', $OutputDirectory)
+$executable = Join-Path $OutputDirectory 'REmmanager.exe'
+if (-not (Test-Path -LiteralPath $executable)) { throw 'Published executable missing.' }
+Write-Host "Ready: $executable ($Configuration; Python, .NET and Windows App SDK bundled)"

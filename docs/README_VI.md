@@ -106,7 +106,20 @@ python tools/verify_ui.py --screenshots artifacts/winui
 python tools/package_source.py
 ```
 
-Build dùng .NET SDK 8.0.425, Windows App SDK 2.5.1, Python 3.13.9 và dependencies trong `tools/backend-requirements.txt`. Đầu ra `dist/REmmanager.exe`. `main.py` và `launch.bat` là launcher của EXE đã build, không phải GUI Python độc lập.
+Build dùng .NET SDK 8.0.425, Windows App SDK 2.5.1, Python 3.13.9 và dependencies trong `tools/backend-requirements.txt`. Đầu ra `dist/REmmanager.exe`. Thêm `-Configuration Debug` để build Debug; dùng `-OutputDirectory artifacts/debug` để lưu riêng. Debug tắt tối ưu managed và nhúng symbol gỡ lỗi managed vào EXE. `main.py` và `launch.bat` là launcher của EXE đã build, không phải GUI Python độc lập.
+
+### Build bằng GitHub Actions
+
+Mở **Actions → Build and publish → Run workflow**, chọn nhánh `main` hoặc nhánh phiên bản, rồi chọn **Release** hay **Debug**. Workflow chỉ chạy thủ công; commit, push, pull request và tag không tự kích hoạt build. Xem [hướng dẫn chạy workflow của GitHub](https://docs.github.com/en/actions/managing-workflow-runs/manually-running-a-workflow).
+
+Sau khi build và vượt qua các test trên Windows x64, workflow đưa `REmmanager.exe` cùng `REmmanager.sha256` lên GitHub Releases. Phiên bản trong `pyproject.toml`, engine Python và project WinUI phải trùng nhau. Mỗi loại build và phiên bản có bộ đếm riêng:
+
+- Release: `main-0.5.2-001`, `main-0.5.2-002`, …; bản chính thức, đánh dấu Latest.
+- Debug: `debug-0.5.2-001`, `debug-0.5.2-002`, …; đánh dấu pre-release, giữ nguyên Latest.
+
+Tag trỏ đúng commit được chọn lúc chạy. Các lượt xuất bản chạy lần lượt giữa các nhánh; không ghi đè tag hay release cũ. Nếu upload lỗi, release giữ ở dạng draft để kiểm tra và giữ số thứ tự đó; lượt sau dùng số mới. Workflow dùng `GITHUB_TOKEN` có sẵn với quyền `contents: write`, không cần token cá nhân. Build ở máy không tự xuất bản.
+
+Ngoài 99 test backend, có 7 test xuất bản kiểm tra bộ đếm tag theo phiên bản/loại build, đồng bộ phiên bản, checksum, Debug pre-release và giữ draft nếu upload lỗi.
 
 Kiểm thử core với runtime đóng gói:
 
